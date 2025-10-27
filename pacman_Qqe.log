@@ -1,0 +1,13 @@
+amd-ucode
+base
+git
+grml-zsh-config
+linux-firmware
+linux-zen
+networkmanager
+openssh
+sudo
+vim
+zsh
+zsh-autosuggestions
+zsh-syntax-highlighting
