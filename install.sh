@@ -16,7 +16,10 @@ NC='\033[0m' # No Color
 # ============================================
 
 # .config files (these go in ~/.config/)
-CONFIG_FILES=()
+CONFIG_FILES=(
+    "hypr"
+    "quickshell"
+)
 
 # Home directory files (these go in ~/)
 HOME_FILES=(
