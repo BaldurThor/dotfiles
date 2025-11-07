@@ -14,6 +14,6 @@ PanelWindow {
     // center the bar in its parent component (the window)
     anchors.centerIn: parent
 
-    text: "hello world"
+    text: "hello arch"
   }
 }

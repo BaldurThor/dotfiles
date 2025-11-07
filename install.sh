@@ -19,6 +19,8 @@ NC='\033[0m' # No Color
 CONFIG_FILES=(
     "hypr"
     "quickshell"
+    "kitty"
+    "dolphinrc"
 )
 
 # Home directory files (these go in ~/)
