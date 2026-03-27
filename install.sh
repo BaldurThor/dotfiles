@@ -24,6 +24,7 @@ CONFIG_FILES=(
 HOME_FILES=(
   ".zshrc"
   ".gitconfig"
+  ".p10k.zsh"
 )
 
 # Get the directory where this script is located
