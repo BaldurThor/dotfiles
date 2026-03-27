@@ -19,6 +19,7 @@ NC='\033[0m' # No Color
 CONFIG_FILES=(
   "ghostty"
   "hypr"
+  "nvim"
 )
 
 # Home directory files (these go in ~/)
