@@ -1,0 +1,15 @@
+base
+base-devel
+bat
+eza
+git
+openssh
+paru
+paru-debug
+sudo
+thefuck
+vim
+zsh
+zsh-autosuggestions
+zsh-completions
+zsh-theme-powerlevel10k-git
