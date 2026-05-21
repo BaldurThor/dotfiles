@@ -357,6 +357,10 @@ eval $(thefuck --alias)
 alias ls='eza --icons --group-directories-first'
 alias ll='eza -la --icons --group-directories-first'
 
+alias choco='choco.exe'
+
+alias explorer='explorer.exe'
+
 tree() {
   # This regex checks for:
   # 1. A hyphen followed by any number of characters and then an 'a' (like -la)
@@ -369,6 +373,16 @@ tree() {
     eza --tree --icons --git --git-ignore "$@"
   fi
 }
+
+export HISTFILE=~/.zsh_history
+export HISTSIZE=100000
+export SAVEHIST=100000
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_SPACE
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # 1. Enable zsh-autosuggestions (The "ghost text" you see in Starship)
