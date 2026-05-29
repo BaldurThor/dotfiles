@@ -105,6 +105,19 @@ for file in "${HOME_FILES[@]}"; do
 done
 
 echo ""
+echo "Deploying system enclave scripts..."
+TARGET_BIN_DIR="$HOME/.local/bin"
+mkdir -p "$TARGET_BIN_DIR"
+
+if [ -f "$DOTFILES_DIR/bin/term-lock" ]; then
+  create_symlink "$DOTFILES_DIR/bin/term-lock" "$TARGET_BIN_DIR/term-lock"
+  chmod +x "$TARGET_BIN_DIR/term-lock"
+  echo -e "${GREEN}✓${NC} Security flags initialized for term-lock"
+else
+  echo -e "${RED}!${NC} term-lock source file missing from repository 'bin/' directory"
+fi
+
+echo ""
 echo -e "${GREEN}Done!${NC} Dotfiles installation complete."
 echo ""
 echo "Note: Any existing files were backed up with a timestamp."
