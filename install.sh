@@ -109,13 +109,15 @@ echo "Deploying system enclave scripts..."
 TARGET_BIN_DIR="$HOME/.local/bin"
 mkdir -p "$TARGET_BIN_DIR"
 
-if [ -f "$DOTFILES_DIR/bin/term-lock" ]; then
-  create_symlink "$DOTFILES_DIR/bin/term-lock" "$TARGET_BIN_DIR/term-lock"
-  chmod +x "$TARGET_BIN_DIR/term-lock"
-  echo -e "${GREEN}✓${NC} Security flags initialized for term-lock"
-else
-  echo -e "${RED}!${NC} term-lock source file missing from repository 'bin/' directory"
-fi
+# Dynamically deploy any script placed inside the repo's bin folder
+for script in "$DOTFILES_DIR/bin/"*; do
+  if [ -f "$script" ]; then
+    script_name=$(basename "$script")
+    create_symlink "$script" "$TARGET_BIN_DIR/$script_name"
+    chmod +x "$TARGET_BIN_DIR/$script_name"
+    echo -e "${GREEN}✓${NC} Security flags initialized for $script_name"
+  fi
+done
 
 echo ""
 echo -e "${GREEN}Done!${NC} Dotfiles installation complete."

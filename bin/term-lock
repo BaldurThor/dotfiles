@@ -1,17 +1,17 @@
 #!/usr/bin/env zsh
-# Ignore Ctrl+C so users cannot break out of the secure interface loop
 trap '' SIGINT
 
 while true; do
     clear
-    
-    # Print system aesthetics with Fastfetch
     fastfetch
     
     echo ""
     echo -e "\e[36mSecure Terminal Enclave. Awaiting Authentication...\e[0m"
     echo ""
     
-    # Authenticate and securely carry the Wayland instance state into your active Zsh profile
-    su Baldur
+    # Authenticate and drop straight into the interactive shell
+    su Baldur -c "export WAYLAND_DISPLAY=$WAYLAND_DISPLAY XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR HYPRLAND_INSTANCE_SIGNATURE=$HYPRLAND_INSTANCE_SIGNATURE; exec zsh -i"
+    
+    # Tiny breather to prevent CPU spiking in case of shell crashes
+    sleep 1
 done
