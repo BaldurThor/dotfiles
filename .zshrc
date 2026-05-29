@@ -382,3 +382,7 @@ fpath=(/usr/share/zsh/site-functions $fpath)
 # sudo pacman -S zsh-syntax-highlighting
 [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
     source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+if [[ -z "$WAYLAND_DISPLAY" ]] && [[ "$XDG_VTNR" -eq 1 ]]; then
+    exec start-hyprland
+fi
