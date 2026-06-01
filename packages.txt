@@ -3,13 +3,16 @@ base-devel
 bat
 efibootmgr
 eza
+ghostty
 git
+hyprland
 intel-ucode
 linux
 networkmanager
 openssh
 paru
 paru-debug
+swaybg
 thefuck
 ttf-jetbrains-mono-nerd
 vim

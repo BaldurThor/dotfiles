@@ -26,9 +26,9 @@ hl.config({
 })
 
 hl.on("hyprland.start", function ()
-    hl.exec_cmd("swaybg -i /home/Baldur/dotfiles/wallpaper.jpg -m fill")
+    hl.exec_cmd("swaybg -i ~/dotfiles/wallpaper.jpg -m fill")
     
-    hl.exec_cmd("ghostty --title=\"Secure Terminal Enclave\" -e /home/Baldur/.local/bin/term-lock")
+    hl.exec_cmd("ghostty --title=\"Secure Terminal Enclave\"")
 end)
 
 hl.window_rule({
@@ -40,14 +40,8 @@ hl.window_rule({
 hl.bind("SUPER + Q", function()
     local w = hl.get_active_window()
     if w ~= nil and w.title == "Secure Terminal Enclave" then
-        -- Protected core console focused: ignore the kill command entirely!
         return
     else
-        -- External window focused (like Firefox): execute a clean close
         hl.dispatch(hl.dsp.window.close())
     end
-end)
-
-hl.bind("SUPER + ESCAPE", function()
-    hl.exec_cmd("~/.local/bin/panic-lock")
 end)
