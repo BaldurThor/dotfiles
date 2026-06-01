@@ -25,10 +25,10 @@ hl.config({
     },
 })
 
-hl.on("hyprland.start", function ()
+hl.on("hyprland.start", function()
     hl.exec_cmd("swaybg -i ~/dotfiles/wallpaper.jpg -m fill")
-    
-    hl.exec_cmd("ghostty --title=\"Secure Terminal Enclave\"")
+
+    hl.exec_cmd("ghostty --title=\"Core Terminal Window\" -e bash -c \"while true; do clear; hyprlock --quiet > /dev/null 2>&1; zsh; done\"")
 end)
 
 hl.window_rule({
@@ -39,9 +39,11 @@ hl.window_rule({
 
 hl.bind("SUPER + Q", function()
     local w = hl.get_active_window()
-    if w ~= nil and w.title == "Secure Terminal Enclave" then
-        return
+    if w ~= nil and w.title == "Core Terminal Window" then
+        hl.exec_cmd("hyprctl dispatch sendshortcut CTRL, d, activewindow")
     else
         hl.dispatch(hl.dsp.window.close())
     end
 end)
+
+hl.bind("SUPER + ESCAPE", hl.dsp.exec_cmd("hyprlock"))
