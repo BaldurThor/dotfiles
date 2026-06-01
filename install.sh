@@ -17,10 +17,12 @@ NC='\033[0m' # No Color
 
 # .config files (these go in ~/.config/)
 CONFIG_FILES=(
-  "ghostty"
-  "hypr"
+#  "ghostty"
+#  "hypr"
 #  "nvim"
 )
+
+#SYSTEM_SCRIPTS="true"
 
 # Home directory files (these go in ~/)
 HOME_FILES=(
@@ -104,6 +106,8 @@ for file in "${HOME_FILES[@]}"; do
   fi
 done
 
+if [[ -v SYSTEM_SCRIPTS ]]; then
+
 echo ""
 echo "Deploying system enclave scripts..."
 TARGET_BIN_DIR="$HOME/.local/bin"
@@ -118,6 +122,8 @@ for script in "$DOTFILES_DIR/bin/"*; do
     echo -e "${GREEN}✓${NC} Security flags initialized for $script_name"
   fi
 done
+
+fi
 
 echo ""
 echo -e "${GREEN}Done!${NC} Dotfiles installation complete."
