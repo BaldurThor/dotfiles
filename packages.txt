@@ -1,0 +1,6 @@
+eza
+vivid
+starship
+thefuck
+vim
+zsh
