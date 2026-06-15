@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+# List of files to completely ignore during the symlinking process
+EXCLUDE_FILES=(
+    "install.sh"
+    "README.md"
+    "packages.txt"
+    ".gitignore"
+    ".gitmodules"
+)
+
 # Get the absolute path to the dotfiles directory so the script works from anywhere
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -82,10 +91,34 @@ link_item() {
 
 # --- Step 2: Symlink root files ---
 echo -e "\nLinking root dotfiles..."
-for file in "$DOTFILES_DIR"/*; do
-    if [ -f "$file" ] && [ "$(basename "$file")" != "install.sh" ] && [ "$(basename "$file")" != ".gitignore" ] && [ "$(basename "$file")" != ".gitignore" ]; then
-        filename="$(basename "$file")"
-        link_item "$file" "$HOME/.$filename"
+for file in "$DOTFILES_DIR"/* "$DOTFILES_DIR"/.*; do
+    filename="$(basename "$file")"
+
+    # Skip '.', '..', and unmatched literal globs
+    if [ "$filename" = "." ] || [ "$filename" = ".." ] || [ "$filename" = "*" ] || [ "$filename" = ".*" ]; then
+        continue
+    fi
+
+    # Only process standard files (skip directories)
+    if [ -f "$file" ]; then
+        
+        # Check if the file is in our exclude list
+        is_excluded=false
+        for excluded_file in "${EXCLUDE_FILES[@]}"; do
+            if [ "$filename" = "$excluded_file" ]; then
+                is_excluded=true
+                break
+            fi
+        done
+
+        # If it was in the list, skip to the next file
+        if [ "$is_excluded" = true ]; then
+            continue
+        fi
+        
+        # Strip leading dot (if any) and create the symlink
+        clean_name="${filename#.}"
+        link_item "$file" "$HOME/.$clean_name"
     fi
 done
 
