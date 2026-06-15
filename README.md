@@ -1,18 +1,12 @@
 # My Dotfiles
 
-This repository holds my personal configuration files for Arch Linux. The setup is designed to be highly portable, safe, and entirely self-contained.
+This repository holds my personal configuration files for Linux. The setup is designed to be highly portable, safe, and entirely self-contained.
 
 ## 📦 Prerequisites
 
 Before running the install script, ensure you have the required packages installed. The script will check for these and fail safely if they are missing.
 
-Look at `packages.txt` for the full list, but the core tools include:
-* `zsh`
-* `vim`
-* `starship`
-* `eza`
-* `vivid`
-* `thefuck`
+Look at `packages.txt` for the full list
 
 ## 🚀 Installation
 
