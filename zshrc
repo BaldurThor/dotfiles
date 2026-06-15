@@ -35,6 +35,11 @@ alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias vi='vim'
 
+export BAT_PAGER="less -R --mouse"
+alias cat='bat --style=plain --pager=never'
+alias less='bat --paging=always'
+
+
 # --- Plugins ---
 ZSHRC_PATH="$HOME/.zshrc"
 DOTFILES_DIR="${ZSHRC_PATH:A:h}"
