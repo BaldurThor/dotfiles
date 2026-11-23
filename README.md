@@ -14,7 +14,7 @@ Clone the repository anywhere on your system. The install script dynamically res
 
 ```bash
 # 1. Clone the repo and initialize the submodules (for Zsh plugins)
-git clone --recurse-submodules [https://github.com/YOUR_USERNAME/dotfiles.git](https://github.com/YOUR_USERNAME/dotfiles.git) ~/dotfiles
+git clone --recurse-submodules https://github.com/BaldurThor/dotfiles.git ~/dotfiles
 
 # 2. Enter the directory
 cd ~/dotfiles
