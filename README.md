@@ -20,7 +20,7 @@ git clone --recurse-submodules https://github.com/BaldurThor/dotfiles.git ~/dotf
 cd ~/dotfiles
 
 # 3. Install packages
-sudo pacman -S --needed - < pkglist.txt
+sudo pacman -S --needed - < packages.txt
 
 # 4. Make the script executable (first time only)
 chmod +x install.sh
