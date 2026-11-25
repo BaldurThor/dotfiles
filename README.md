@@ -12,18 +12,23 @@ Look at `packages.txt` for the full list
 
 Clone the repository anywhere on your system. The install script dynamically resolves paths, so it doesn't matter where it lives (e.g., `~/dotfiles` or `~/extras/dotfiles`).
 
+### 1. Clone the repo and initialize the submodules (for Zsh plugins)
 ```bash
-# 1. Clone the repo and initialize the submodules (for Zsh plugins)
-git clone --recurse-submodules https://github.com/BaldurThor/dotfiles.git ~/dotfiles
-
-# 2. Enter the directory
-cd ~/dotfiles
-
-# 3. Install packages
-sudo pacman -S --needed - < packages.txt
-
-# 4. Make the script executable (first time only)
+git clone --recurse-submodules https://github.com/BaldurThor/dotfiles.git /usr/local/share/dotfiles
+```
+### 2. Enter the directory
+```bash
+cd /usr/local/share/dotfiles
+```
+### 3. Install packages
+```bash
+pacman -S --needed - < packages.txt
+```
+### 4. Make the script executable (first time only)
+```bash
 chmod +x install.sh
-
-# 5. Run the installer
+```
+### 5. Run the installer
+```bash
 ./install.sh
+```
